@@ -4,4 +4,8 @@
 
 layout: home
 ---
-안녕하신가욥
+이것저것 정리하는 사이트.
+
+```bash
+bundle exec jekyll serve
+```
