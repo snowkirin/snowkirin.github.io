@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Angluar
+title: Angular
 has_children: true
 nav_order: 4
-permalink: /docs/angluar
+permalink: /docs/angular
 ---
 
 Angular 기본 문서

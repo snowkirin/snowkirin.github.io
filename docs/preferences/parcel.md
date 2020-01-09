@@ -5,9 +5,15 @@ parent: Preferences
 nav_order: 1
 ---
 
-[Parcel](https://ko.parceljs.org/)
+# Parcel - 20200106
 
-2020-01-06 기준으로 아직 보고 있는중.
+> 불꽃 튀게 빠르고 설정이 필요 없는 웹 애플리케이션 번들러
+
+
+
+공식 사이트:  [Linkl](https://ko.parceljs.org/)
+
+공식 깃허브: [Link](https://github.com/parcel-bundler/parcel)
 
 
 
@@ -28,9 +34,9 @@ nav_order: 1
 ```
 Project Folder
 │   package.json
-|   tsconfig.json
-|   start.sh
-|
+│   tsconfig.json
+│   start.sh
+│
 └───src 
 │   │   index.html
 │   │   index.ts
@@ -54,7 +60,7 @@ set -e
 "$(npm bin)/parcel" ./src/index.html --open
 ```
 
-OR
+
 
 ```json
 // package.json
@@ -62,7 +68,7 @@ OR
   // ...
   "scripts": {
     // ...
-    "serve": "tsc --noEmit --watch & parcel ./src/index.html --open"
+    "start": "start.sh"
   },
   // ...
 }
@@ -74,19 +80,35 @@ OR
 // tsconfig.json
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": true,
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "module": "ES6",
+    "importHelpers": true,
     "moduleResolution": "node",
-    "target": "ES2015",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
+
 ```
 
 
