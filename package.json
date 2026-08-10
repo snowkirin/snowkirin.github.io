@@ -2,6 +2,7 @@
   "name": "snowkirin-blog",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.27.0",
   "engines": {
     "node": ">=22.12.0"
   },
