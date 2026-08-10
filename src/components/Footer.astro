@@ -1,0 +1,16 @@
+---
+import { SITE_AUTHOR } from '../consts';
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} {SITE_AUTHOR}. All rights reserved.
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: linear-gradient(to bottom, rgba(229, 233, 240, 0.5), #fff) no-repeat;
+		color: rgb(96, 115, 159);
+		text-align: center;
+	}
+</style>

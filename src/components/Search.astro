@@ -1,0 +1,15 @@
+---
+import Search from 'astro-pagefind/components/Search.astro';
+
+interface Props {
+	class?: string;
+	placeholder?: string;
+}
+
+const { class: className, placeholder = '검색...' } = Astro.props;
+---
+
+<Search
+	className={className}
+	searchboxOptions={{ placeholder }}
+/>
