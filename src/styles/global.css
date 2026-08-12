@@ -89,19 +89,6 @@
 	--callout-warning-c: #d29922;    --callout-warning-fg: #e3b341;    /* 4.98:1 */
 	--callout-caution-c: #f85149;    --callout-caution-fg: #ff968f;    /* 5.00:1 */
 }
-@font-face {
-    font-family: 'Nunito';
-    src: url('/fonts/Nunito-VariableFont_wght.woff2') format('woff2-variations');
-    font-weight: 100 900;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Monaspace Radon';
-    src: url('/fonts/Monaspace Radon Var.woff2') format('woff2-variations');
-    font-weight: 100 900;
-    font-display: swap;
-}
 html {
 	background-color: var(--bg-gradient-start);
 	/* 錨點跳轉（TOC、標題 # 連結、瀏覽器 hash 導航）時，於捲動容器頂端預留
@@ -110,11 +97,9 @@ html {
 	scroll-padding-top: 5rem;
 }
 body {
-	/* Nunito 擺第一：Latin/數字/常用標點由它接管（已在 ~29ms 載入），
-	   中文沒有的字才落到 Chiron 的 CJK 切片。如此不必載 Chiron 的 lgc(116KB)，
-	   也消掉英文「先 Nunito 後 lgc」的二次換字。罕用符號 Nunito 沒有時仍會
-	   回退到 Chiron lgc（按需、極少觸發）。 */
-	font-family: 'Nunito', 'Chiron GoRound TC WS', sans-serif;
+	/* Pretendard: 한글+라틴 조화를 위해 한글 최적화 고딕을 최우선으로.
+	   (Nunito/Chiron 대신 사용 — Inter 계열 Pretendard로 통일) */
+	font-family: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -224,7 +209,7 @@ hr {
 	}
 }
 code, pre, kbd {
-    font-family: 'Monaspace Radon', monospace;
+    font-family: 'Pretendard Variable', Pretendard, ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 /* ── 頁面切換動畫 ──
