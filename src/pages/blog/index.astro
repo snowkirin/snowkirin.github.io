@@ -1,44 +1,41 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getSortedPosts } from '../../lib/posts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import Pagination from '../../components/Pagination.astro';
+import { SITE_TITLE, POSTS_PER_PAGE } from '../../consts';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations();
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const allPosts = await getSortedPosts();
+
+const posts = allPosts.slice(0, POSTS_PER_PAGE);
+const lastPage = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
 ---
 
-<!doctype html>
-<html lang="ko">
-	<head>
-		<BaseHead title={`블로그 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main class="!w-full max-w-3xl">
-			<h1 class="text-3xl font-bold">블로그</h1>
-			<ul class="mt-8 grid list-none gap-8 p-0">
-				{posts.map((post) => (
-					<li>
-						<a href={`/blog/${post.id}/`} class="group block">
-							<h2 class="text-2xl font-semibold leading-snug group-hover:text-accent">
-								{post.data.title}
-							</h2>
-							<p class="mt-1 text-sm text-neutral-500">
-								<FormattedDate date={post.data.pubDate} />
-								{post.data.series && (
-									<span class="ml-2 text-accent">{post.data.series.name}</span>
-								)}
-							</p>
-							<p class="mt-2 text-neutral-600">{post.data.description}</p>
-						</a>
-					</li>
-				))}
-			</ul>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout title={`${t('blog.allPosts')} — ${SITE_TITLE}`} description={t('blog.metaDescription')}>
+	<div class="page-header">
+		<h1>{t('blog.allPosts')}</h1>
+		<span class="post-count">{t('blog.totalCount', { n: allPosts.length })}</span>
+	</div>
+	<PostList posts={posts} />
+	<Pagination currentPage={1} lastPage={lastPage} />
+</BaseLayout>
+
+<style>
+	/* ── 頁面標題 ── */
+	.page-header {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		margin-bottom: 1.5rem;
+	}
+	.page-header h1 {
+		font-size: 2rem;
+		margin: 0;
+	}
+	.post-count {
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+</style>
