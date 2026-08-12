@@ -8,7 +8,10 @@ const t = useTranslations();
 
 <header transition:persist transition:animate="none">
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2 class="brand"><a href="/">
+			<img class="logo" src="/logo.png" alt="" width="28" height="28" />
+			<span>{SITE_TITLE}</span>
+		</a></h2>
 		<div class="internal-links" id="nav-menu">
 			<HeaderLink href="/blog">{t('nav.blog')}</HeaderLink>
 			<HeaderLink href="/tags">{t('nav.tags')}</HeaderLink>
@@ -53,19 +56,30 @@ const t = useTranslations();
     	top: 0;
     	z-index: 100;
 	}
-	h2 {
+	.brand {
 		margin: 0;
 		font-size: 1em;
+		line-height: 1;
 	}
 
-	h2 a,
-	h2 a.active {
+	.brand a,
+	.brand a.active {
 		text-decoration: none;
 		color: rgb(var(--black));
 		transition: color 0.18s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
-	h2 a:hover {
+	.brand a:hover {
 		color: var(--accent);
+	}
+	.logo {
+		width: 28px;
+		height: 28px;
+		border-radius: 8px;
+		object-fit: cover;
+		display: block;
 	}
 	nav {
 		display: flex;
