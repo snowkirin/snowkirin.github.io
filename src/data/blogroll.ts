@@ -17,4 +17,10 @@ export const blogroll: BlogrollLink[] = [
     description: '한국 개발자 개인 블로그 · RSS 발견 플랫폼',
     avatar: 'https://icons.duckduckgo.com/ip3/indieblog.net.ico',
   },
+  {
+    name: 'GeekNews',
+    url: 'https://news.hada.io/',
+    description: '개발 · 기술 · 스타트업 뉴스를 한눈에 보는 커뮤니티',
+    avatar: 'https://icons.duckduckgo.com/ip3/news.hada.io.ico',
+  },
 ];
