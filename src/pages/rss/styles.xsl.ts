@@ -19,23 +19,23 @@ export const GET: APIRoute = () => {
         <title><xsl:value-of select="/rss/channel/title"/> — RSS</title>
         <style>
           :root {
-            --bg: #f7fbfd;
+            --bg: #fafafa;
             --card: #ffffff;
-            --text: #1a2730;
-            --muted: #5b6b75;
-            --accent: #0a8cbf;
-            --accent-dark: #086a91;
-            --border: #d8e6ee;
+            --text: #171717;
+            --muted: #4d4d4d;
+            --accent: #0070f3;
+            --accent-dark: #0761d1;
+            --border: #ebebeb;
           }
           @media (prefers-color-scheme: dark) {
             :root {
-              --bg: #0d1620;
-              --card: #14222e;
-              --text: #e6eef3;
-              --muted: #97a6b0;
-              --accent: #4fc3e8;
-              --accent-dark: #8bd6f0;
-              --border: #243643;
+              --bg: #000000;
+              --card: #0a0a0a;
+              --text: #ededed;
+              --muted: #a5a5a5;
+              --accent: #0070f3;
+              --accent-dark: #3b82f6;
+              --border: #282828;
             }
           }
           * { box-sizing: border-box; }
@@ -61,7 +61,7 @@ export const GET: APIRoute = () => {
             letter-spacing: 0.06em;
             text-transform: uppercase;
             color: #fff;
-            background: #086a91; /* 固定深底，白字在明暗兩模式都達 WCAG（不跟 --accent 翻亮）*/
+            background: #171717; /* 고정 잉크 바탕, 밝은/어두운 양쪽 모두 WCAG 충족 */
             padding: 0.2em 0.7em;
             border-radius: 999px;
             margin: 0 0 0.9rem;
@@ -98,7 +98,7 @@ export const GET: APIRoute = () => {
             padding: 1.1rem 1.25rem;
             transition: transform 0.18s ease, box-shadow 0.18s ease;
           }
-          .item:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,140,191,0.12); }
+          .item:hover { transform: translateY(-2px); box-shadow: 0px 1px 1px rgba(0,0,0,0.05), 0px 2px 2px rgba(0,0,0,0.08), 0px 8px 16px -4px rgba(0,0,0,0.08); }
           .item-link {
             font-size: 1.08rem;
             font-weight: 700;

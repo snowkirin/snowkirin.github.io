@@ -4,40 +4,39 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 :root {
-	/* 淺色模式 - 水藍主題 */
-	--accent: #5BB8D4;        /* 水藍，主色調 */
-	--accent-dark: #2E86A8;   /* 較深的水藍，hover用 */
-	--accent-light: #C5EDFF;  /* 淡水藍，背景點綴用 */
-	--tag-chip-fg: #1A6076;   /* tag chip 文字：淺底 #C5EDFF 上達 5.68:1（hover 改用 accent-fill 填色）*/
-	--tag-current-bg: #5BB8D4;/* 當前 tag chip：極性同頁面（淺＝亮底深字 8.25），避開 self-link :visited 染色 */
-	--tag-current-fg: #0f1219;
-	--accent-fill: #1F7191;   /* 填色 chip 專用底色：比 accent 深，白字可達 WCAG 4.5:1 */
-	--on-accent-fill: #fff;   /* 填色 chip 上的文字（淺色模式：白字鋪深青）*/
+	/* 淺色模式 - Vercel-inspired (ink / canvas / gray scale + link blue accent) */
+	--accent: #0070f3;        /* link blue, primary accent */
+	--accent-dark: #0761d1;   /* link deep, hover */
+	--accent-light: #d3e5ff;  /* link bg soft, background accent */
+	--tag-chip-fg: #0550ae;   /* tag chip 文字：淺底 accent-light 上高對比 */
+	--tag-current-bg: #0070f3;/* 當前 tag chip：極性同頁面（淺＝亮底深字） */
+	--tag-current-fg: #ffffff;
+	--accent-fill: #171717;   /* 填色 chip 專用底色：ink */
+	--on-accent-fill: #fff;   /* 填色 chip 上的文字（白字鋪 ink）*/
 
-	--pinned-badge-bg: #5BB8D4;  /* 置頂徽章：鋪在隨模式變色的底板上，跟頁面極性一致（淺色＝深字/亮底）*/
-	--pinned-badge-fg: #0f1219;
+	--pinned-badge-bg: #171717;  /* 置頂徽章：ink */
+	--pinned-badge-fg: #ffffff;
 
-	/* 置頂卡底板：頂端半透明（透出模糊 hero 圖）→ 極短距離淡出到純色 var(--bg)。
-	   這是淡出漸層的「起點色」（同頁面底色、低不透明）；文字一律落在純色段 */
-	--pinned-plate-fade: rgba(240, 249, 255, 0.15);
+	/* 置頂卡底板 */
+	--pinned-plate-fade: rgba(250, 250, 250, 0.55);
 
-	--black: 15, 18, 25;
-	--gray: 82, 98, 135;       /* muted 文字：調深至卡片底色上 ≥4.5:1（最差 post 卡 5.45）*/
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
+	--black: 23, 23, 23;         /* ink #171717 */
+	--gray: 77, 77, 77;          /* body #4d4d4d, secondary text */
+	--gray-light: 235, 235, 235; /* hairline #ebebeb, borders/dividers */
+	--gray-dark: 161, 161, 161;  /* hairline-strong #a1a1a1 */
 
-	--bg: #f0f9ff;
-	--bg-gradient-start: #C5EDFF;  /* 淡水藍漸層 */
-	--text: rgb(34, 41, 57);
+	--bg: #ffffff;               /* canvas */
+	--bg-gradient-start: #fafafa;/* canvas-soft body tint */
+	--text: rgb(23, 23, 23);
 
 	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+		0px 1px 1px rgba(0, 0, 0, 0.05), 0px 2px 2px rgba(0, 0, 0, 0.08),
+		0px 8px 16px -4px rgba(0, 0, 0, 0.08);
 
-	--header-bg: rgba(197, 237, 255, 0.35);
-	--header-border: rgba(255, 255, 255, 0.45);
+	--header-bg: rgba(255, 255, 255, 0.8);
+	--header-border: rgba(235, 235, 235, 0.8);
 
-	--header-backdrop: blur(16px) saturate(180%) brightness(1.08);
+	--header-backdrop: blur(16px) saturate(140%);
 
 	/* ── Callout / Admonition ──
 	   -c = 邊框/圖示色（裝飾，並當底色 tint 來源）；-fg = 標題文字色（已量化 WCAG）。
@@ -54,32 +53,32 @@
    .dark 或 .light 永遠掛在 <html> 上，所以這裡不需要
    @media (prefers-color-scheme) 的重複區塊。 */
 :root.dark {
-	--accent: #7DD3EA;
-	--accent-dark: #5BB8D4;
-	--accent-light: #1a3a4a;
-	--tag-chip-fg: #7DD3EA;   /* tag chip 文字：暗底 #1a3a4a 上達 7.08:1 */
-	--tag-current-bg: #1F7191;/* 當前 tag chip：極性同頁面（暗＝深底白字 5.48）*/
+	--accent: #0070f3;
+	--accent-dark: #3b82f6;
+	--accent-light: #1a2a44;
+	--tag-chip-fg: #79c0ff;   /* tag chip 文字：暗底上 */
+	--tag-current-bg: #0070f3;/* 當前 tag chip：極性同頁面（暗＝深底白字）*/
 	--tag-current-fg: #fff;
-	--accent-fill: #7DD3EA;   /* 暗色填色 chip：亮青底 */
-	--on-accent-fill: #0f1219;/* 暗色填色 chip 用深字（深字鋪亮青）*/
+	--accent-fill: #0070f3;   /* 暗色填色 chip：link blue */
+	--on-accent-fill: #ffffff;/* 暗色填色 chip 用白字 */
 
-	--pinned-badge-bg: #1F7191;  /* 暗色置頂徽章：深底白字，跟頁面極性一致（暗色＝淺字/深底）*/
+	--pinned-badge-bg: #0070f3;  /* 暗色置頂徽章：link blue */
 	--pinned-badge-fg: #fff;
 
-	--pinned-plate-fade: rgba(30, 58, 95, 0.30);
+	--pinned-plate-fade: rgba(10, 10, 10, 0.55);
 
-	--black: 240, 240, 245;
-	--gray: 160, 175, 200;
-	--gray-light: 40, 50, 70;
-	--gray-dark: 220, 225, 235;
+	--black: 237, 237, 237;
+	--gray: 165, 165, 165;
+	--gray-light: 40, 40, 40;
+	--gray-dark: 210, 210, 210;
 
-	--bg: #1e3a5f;
-	--bg-gradient-start: #0d1b2a;
-	--text: rgb(220, 225, 235);
+	--bg: #0a0a0a;
+	--bg-gradient-start: #000000;
+	--text: rgb(237, 237, 237);
 
-	--header-bg: rgba(13, 27, 42, 0.45);
-	--header-border: rgba(255, 255, 255, 0.08);
-	--header-backdrop: blur(12px) brightness(0.9) saturate(150%);
+	--header-bg: rgba(10, 10, 10, 0.75);
+	--header-border: rgba(40, 40, 40, 0.8);
+	--header-backdrop: blur(12px) brightness(0.9) saturate(120%);
 
 	/* ── Callout（暗底 #1e3a5f，tint α13%，標題文字皆 ≥4.88:1）── */
 	--callout-tint: 13%;
