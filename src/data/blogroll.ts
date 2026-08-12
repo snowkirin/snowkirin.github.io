@@ -11,11 +11,10 @@ export type BlogrollLink = {
 
 // Blogroll 清單（顯示名「友站」）。純人類導覽，刻意不納入 llms.txt／sitemap。
 export const blogroll: BlogrollLink[] = [
-  // 範例：
-  // {
-  //   name: '某某的部落格',
-  //   url: 'https://example.com',
-  //   description: '寫前端與生活雜記',
-  //   avatar: '/blogroll/example.png',
-  // },
+  {
+    name: 'Indieblog',
+    url: 'https://indieblog.net/',
+    description: '한국 개발자 개인 블로그 · RSS 발견 플랫폼',
+    avatar: 'https://icons.duckduckgo.com/ip3/indieblog.net.ico',
+  },
 ];
