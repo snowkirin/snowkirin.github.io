@@ -3,13 +3,14 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { useTranslations } from '../i18n/utils';
+import logo from '../assets/logo.png';
 const t = useTranslations();
 ---
 
 <header transition:persist transition:animate="none">
 	<nav>
 		<h2 class="brand"><a href="/">
-			<img class="logo" src="/logo.png" alt="" width="28" height="28" />
+			<img class="logo" src={logo.src} alt="" width="28" height="28" />
 			<span>{SITE_TITLE}</span>
 		</a></h2>
 		<div class="internal-links" id="nav-menu">
