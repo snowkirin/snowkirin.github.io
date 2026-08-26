@@ -22,14 +22,14 @@
       },
       {
         "id": "content-drive",
-        "label": "컨텐츠 구동",
+        "label": "콘텐츠 구동",
         "focus": [
           "content",
           "data",
           "lib",
           "i18n"
         ],
-        "note": "MDX 컨텐츠와 정적 데이터가 사이트를 구동합니다."
+        "note": "MDX 콘텐츠와 정적 데이터가 사이트를 구동합니다."
       },
       {
         "id": "build-deploy",
@@ -38,7 +38,7 @@
           "build",
           "deploy"
         ],
-        "note": "astro build + pagefind 후 Cloudflare Workers로 배포합니다."
+        "note": "astro build + pagefind 후 GitHub Actions로 GitHub Pages에 배포합니다."
       }
     ]
   },
@@ -46,7 +46,7 @@
     {
       "id": "content",
       "type": "database",
-      "label": "컨텐츠 컬렉션",
+      "label": "콘텐츠 컬렉션",
       "sublabel": "src/content (MDX)",
       "pos": [
         60,
@@ -116,7 +116,7 @@
     {
       "id": "edge",
       "type": "cloud",
-      "label": "Cloudflare CDN",
+      "label": "GitHub Pages CDN",
       "sublabel": "에지 캐시",
       "pos": [
         360,
@@ -160,8 +160,8 @@
     {
       "id": "deploy",
       "type": "cloud",
-      "label": "Cloudflare Workers",
-      "sublabel": "wrangler deploy",
+      "label": "GitHub Pages",
+      "sublabel": "actions/deploy-pages",
       "pos": [
         360,
         460
@@ -240,7 +240,7 @@
       "id": "lib-to-site",
       "from": "lib",
       "to": "site",
-      "label": "가공된 컨텐츠",
+      "label": "가공된 콘텐츠",
       "fromSide": "bottom",
       "toSide": "top"
     },
@@ -291,9 +291,9 @@
     },
     {
       "dot": "cyan",
-      "title": "컨텐츠 구동",
+      "title": "콘텐츠 구동",
       "items": [
-        "MDX 컨텐츠 컬렉션과 정적 데이터가 사이트를 구동",
+        "MDX 콘텐츠 컬렉션과 정적 데이터가 사이트를 구동",
         "lib 계층이 포스트·시리즈·분류를 가공",
         "i18n 문자열 사전 (현재 ko 단일)",
         "댓글 인프라 구성 (현재 비활성, provider: none)"
@@ -304,7 +304,7 @@
       "title": "빌드·배포",
       "items": [
         "astro build + pagefind로 정적 산출물 생성",
-        "wrangler deploy로 Cloudflare Workers에 배포",
+        "GitHub Actions(actions/deploy-pages)로 GitHub Pages에 배포",
         "배포 결과가 CDN 에지에 반영"
       ]
     }
