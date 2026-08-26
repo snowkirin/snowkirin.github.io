@@ -1,6 +1,6 @@
 ---
 title: "AI 에이전트 운영을 위한 오픈소스 도구 & 스킬 가이드"
-description: "시니어 엔지니어부터 마케터, 모션 디자이너까지 아우르는 AI 에이전트·스킬 도구 35선"
+description: "시니어 엔지니어부터 마케터, 모션 디자이너까지 아우르는 AI 에이전트·스킬 도구 34선"
 pubDate: 2026-08-26
 tags: ["AI", "에이전트", "도구", "개발"]
 pinned: false
@@ -10,31 +10,45 @@ AI 코딩 에이전트(Claude Code, Codex, Cursor 등)를 일상적으로 쓰기
 
 이 글은 커뮤니티에서 회자되는 에이전트·스킬 도구들을 **역할별로 묶어** 정리한 참고 자료입니다. 어떤 업무를 자동화하고 싶은지에 따라 필요한 도구가 달라지므로, 먼저 자신의 목적이 어디에 속하는지 가볍게 훑어보세요.
 
-> 목록을 검토하며 일부 항목은 **해당 저장소를 직접 조사해 정확한 주소로 교정**했습니다. 표기된 유료/무료 여부는 글 작성 시점 기준이며 변동될 수 있습니다.
+> 목록의 URL과 라이선스는 **2026년 8월 기준으로 저장소를 직접 조회해 교정**했습니다(라이선스는 GitHub API의 SPDX 값 기준). 유료/무료 여부와 스킬·에이전트 개수는 주 단위로 바뀌므로 확인 시점 이후의 변동은 반영되어 있지 않습니다. `라이선스 미표기`로 적은 항목은 저장소에 라이선스 파일이 없어 기본적으로 저작권이 전부 유보된 상태이므로, 코드를 재사용하려면 저작자에게 별도로 확인해야 합니다.
+
+## 출발점: 공식 스킬 저장소
+
+어떤 역할부터 보든, 스킬 포맷 자체의 기준점은 여기입니다.
+
+### anthropics/skills
+Anthropic이 공개한 **공식 에이전트 스킬 저장소**입니다. 크리에이티브·개발·엔터프라이즈·문서 등 다양한 스킬과 스킬 명세(spec)를 제공하며, 이 생태계의 사실상 표준입니다.
+
+무료 (라이선스 미표기) · https://github.com/anthropics/skills
 
 ## 1. 시니어 엔지니어
 
 개발 워크플로우를 "체계적인 프로세스"로 바꿔주는 스킬들입니다. AI가 빠른 코드 생성기가 아니라 규율을 지키는 시니어 개발자처럼 동작하도록 하는 데 초점을 둡니다.
 
 ### obra/superpowers
-TDD·디버깅·협업 등 **20+개 조립식 스킬**을 제공하는 에이전트 스킬 프레임워크이자 소프트웨어 개발 방법론입니다. 깃허브에서 가장 빠르게 성장한 오픈소스 중 하나로, "AI가 계획 단계를 건너뛰지 못하게" 만드는 것이 핵심입니다.
+TDD·디버깅·협업 등 **조립식 스킬 묶음**을 제공하는 에이전트 스킬 프레임워크이자 소프트웨어 개발 방법론입니다. 깃허브에서 가장 빠르게 성장한 오픈소스 중 하나로, "AI가 계획 단계를 건너뛰지 못하게" 만드는 것이 핵심입니다.
 
 무료 (MIT) · https://github.com/obra/superpowers
 
 ### addyosmani/agent-skills
-구글 엔지니어 Addy Osmani가 만든 **생산급 엔지니어링 스킬 모음**입니다. spec → plan → build → test → review → simplify → ship 전 과정을 다루는 22개 스킬과 코드 리뷰어·테스트 엔지니어·보안 감사자 등의 전문가 페르소나를 제공합니다.
+구글 엔지니어 Addy Osmani가 만든 **생산급 엔지니어링 스킬 모음**입니다. spec → plan → build → test → review → simplify → ship 전 과정을 다루는 24개 스킬과 코드 리뷰어·테스트 엔지니어·보안 감사자 등의 전문가 페르소나를 제공합니다.
 
 무료 (MIT) · https://github.com/addyosmani/agent-skills
 
 ### multica-ai/andrej-karpathy-skills
 Andrej Karpathy가 지적한 **LLM 코딩 실패 패턴**을 단일 가이드(CLAUDE.md)로 정리한 프로젝트입니다. 잘못된 가정, 과설계, 불필요한 범위 이탈 등 4가지 원칙을 중심으로 에이전트의 코딩 행동을 개선합니다.
 
-무료 (MIT) · https://github.com/multica-ai/andrej-karpathy-skills
+무료 (라이선스 미표기) · https://github.com/multica-ai/andrej-karpathy-skills
 
 ### garrytan/gstack
 Y Combinator CEO Garry Tan이 직접 쓰는 Claude Code 설정을 오픈소스로 공개한 **23개 도구 모음**입니다. CEO·디자이너·엔지니어링 매니저·릴리스 매니저·QA 역할을 슬래시 커맨드로 제공합니다.
 
 무료 (MIT) · https://github.com/garrytan/gstack
+
+### OpenAI Codex
+OpenAI의 코딩 에이전트입니다. 터미널 기반으로 코드 작성·테스트·디버깅을 자동화하며, 에이전트 스킬을 지원합니다.
+
+CLI 무료 (오픈소스) · 클라우드는 ChatGPT 유료 구독 포함 · https://openai.com/codex
 
 ## 2. 제품 디자이너
 
@@ -53,26 +67,16 @@ Y Combinator CEO Garry Tan이 직접 쓰는 Claude Code 설정을 오픈소스�
 ### pbakaus/impeccable
 Anthropic의 프론트엔드 디자인 스킬에서 출발한 **디자인 품질 스킬**입니다. 23개 커맨드와 59개의 결정적 디텍터 규칙으로 AI 생성 UI의 안티패턴(과도한 라운딩, AI 특유의 슬롭 등)을 잡아냅니다.
 
-무료 (MIT) · https://github.com/pbakaus/impeccable
+무료 (Apache-2.0) · https://github.com/pbakaus/impeccable
 
 ## 3. QA 테스터
 
-자동화된 테스트·검증 워크플로우를 에이전트에게 부여하는 도구들입니다.
-
-### OpenAI Codex
-OpenAI의 코딩 에이전트입니다. 터미널 기반으로 코드 작성·테스트·디버깅을 자동화하며, 에이전트 스킬을 지원합니다.
-
-유료 · https://openai.com/codex
+에이전트에게 자동화된 테스트·검증 워크플로우를 부여하는 도구입니다.
 
 ### microsoft/playwright-mcp
 마이크로소프트의 **Playwright 브라우저 자동화를 MCP 서버로** 제공합니다. 에이전트가 실제 브라우저를 열어 UI를 조작하고 검증하며 스크린샷을 찍도록 하여 E2E 테스트를 자동화합니다.
 
 무료 (Apache-2.0) · https://github.com/microsoft/playwright-mcp
-
-### anthropics/skills
-Anthropic이 공개한 **공식 에이전트 스킬 저장소**입니다. 크리에이티브·개발·엔터프라이즈·문서 등 다양한 스킬과 스킬 명세(spec)를 제공하며, 이 생태계의 사실상 표준입니다.
-
-무료 (MIT) · https://github.com/anthropics/skills
 
 ## 4. 문서 팀 (Docs)
 
@@ -86,7 +90,7 @@ Anthropic이 공개한 **공식 에이전트 스킬 저장소**입니다. 크리
 ### microsoft/skills
 마이크로소프트의 **에이전트 스킬 문서·가이드** 모음입니다. 문서 팀 관점에서 에이전트 스킬을 설계·작성하는 참고 자료를 제공합니다.
 
-무료 · https://github.com/microsoft/skills
+무료 (MIT) · https://github.com/microsoft/skills
 
 ### zarazhangrui/frontend-slides
 코딩 에이전트의 프론트엔드 능력을 활용해 **아름다운 웹 슬라이드를 제작**하는 스킬입니다. PowerPoint 대신 인터랙티브한 HTML 슬라이드를 생성하며, URL로 바로 게시할 수 있습니다.
@@ -135,7 +139,7 @@ OpenAI의 **이미지 생성 API**입니다. 소셜 포스트·썸네일·브랜
 
 비디오·모션그래픽 제작을 에이전트로 자동화하는 도구들입니다.
 
-### HiggsField
+### Higgsfield AI
 AI 기반 영상 생성·편집 서비스입니다.
 
 유료 · https://higgsfield.ai
@@ -143,7 +147,7 @@ AI 기반 영상 생성·편집 서비스입니다.
 ### heygen-com/hyperframes
 HeyGen의 오픈소스 **HTML→MP4 렌더링 프레임워크**입니다. HTML·CSS·미디어로 결정론적(재현 가능한) 영상을 렌더링하며, 에이전트가 스킬로 직접 영상을 제작할 수 있습니다.
 
-무료 (MIT) · https://github.com/heygen-com/hyperframes
+무료 (Apache-2.0) · https://github.com/heygen-com/hyperframes
 
 ### calesthio/OpenMontage
 "세계 최초의 오픈소스 **에이전트형 영상 제작 시스템**"을 표방합니다. 12개 제작 파이프라인, 100+ 도구, 700+ 에이전트 스킬/제작 지식 파일로 코딩 에이전트를 영상 스튜디오로 바꿔줍니다.
@@ -151,7 +155,7 @@ HeyGen의 오픈소스 **HTML→MP4 렌더링 프레임워크**입니다. HTML·
 무료 (AGPL-3.0) · https://github.com/calesthio/OpenMontage
 
 ### OpenCut-app/OpenCut
-오픈소스 **CapCut 대안** 동영상 편집기입니다. 브라우저 기반 데스크톱급 편집 성능을 제공하며 Rust/WebAssembly 엔진과 MCP 통합을 지원합니다.
+오픈소스 **CapCut 대안** 동영상 편집기입니다. 브라우저 기반 데스크톱급 편집 성능을 제공하며 Rust 엔진과 MCP 통합을 지원합니다.
 
 무료 (MIT) · https://github.com/OpenCut-app/OpenCut
 
@@ -172,7 +176,7 @@ HeyGen의 오픈소스 **HTML→MP4 렌더링 프레임워크**입니다. HTML·
 ### NotebookLM
 Google의 **AI 문서 분석 노트 도구**입니다. 업로드한 문서를 바탕으로 요약, 질의응답, 팟캐스트 오디오 등 다양한 형식으로 재구성합니다.
 
-무료 · https://notebooklm.google.com
+무료 · https://notebook.google.com
 
 ## 9. 운영 매니저 (Ops)
 
@@ -184,14 +188,14 @@ Notion의 **공식 MCP 서버**입니다. 에이전트가 Notion 페이지·DB�
 무료 · https://developers.notion.com/guides/mcp/overview
 
 ### github/github-mcp-server
-GitHub의 **공식 MCP 서버**입니다. 에이전트가 저장소·이슈·PR·릴리즈 등 GitHub 작업을 API로 수행하도록 연결합니다.
+GitHub의 **공식 MCP 서버**입니다. 에이전트가 저장소·이슈·PR·릴리스 등 GitHub 작업을 API로 수행하도록 연결합니다.
 
 무료 (MIT) · https://github.com/github/github-mcp-server
 
 ### thedotmack/claude-mem
 Claude Code의 **세션 간 메모리 지속**을 위한 스킬/도구입니다. 프로젝트별 컨텍스트를 저장·검색해 에이전트가 이전 대화를 기억하도록 돕습니다.
 
-무료 (MIT) · https://github.com/thedotmack/claude-mem
+무료 (Apache-2.0) · https://github.com/thedotmack/claude-mem
 
 ### mem0ai/mem0
 에이전트용 **메모리 계층(LLM Mem Layer)** 프레임워크입니다. 대화·사용자 선호도 등 장기 메모리를 구조화해 저장·검색하며, 다양한 LLM 앱과 통합됩니다.
@@ -203,17 +207,17 @@ Claude Code의 **세션 간 메모리 지속**을 위한 스킬/도구입니다.
 여러 역할을 아우르는 "올인원" 에이전트 모음입니다.
 
 ### msitarzewski/agency-agents
-**51개 AI 전문가 페르소나**를 제공하는 시스템으로, "온라인 에이전시"를 구축한다는 콘셉트입니다. 각 에이전트마다 정체성·프로세스·산출물이 정의되어 있으며, 네이티브 앱으로 쉽게 설치·관리할 수 있습니다.
+**100개가 넘는 AI 전문가 페르소나**를 제공하는 시스템으로, "온라인 에이전시"를 구축한다는 콘셉트입니다. 각 에이전트마다 정체성·프로세스·산출물이 정의되어 있으며, 네이티브 앱으로 쉽게 설치·관리할 수 있습니다.
 
 무료 (MIT) · https://github.com/msitarzewski/agency-agents
 
 ### ComposioHQ/awesome-claude-skills
 커뮤니티가 선별한 **Claude 스킬 카탈로그**입니다. 70+ SaaS 앱 연동, 콘텐츠 리서치·작성, 이미지 처리 등 다양한 스킬을 찾아볼 수 있는 인덱스 역할을 합니다.
 
-무료 (MIT) · https://github.com/ComposioHQ/awesome-claude-skills
+무료 (라이선스 미표기) · https://github.com/ComposioHQ/awesome-claude-skills
 
 ### wshobson/agents
-Claude Code용 **83+ 전문 에이전트, 15개 멀티에이전트 오케스트레이터, 42개 개발 도구**를 제공합니다. 아키텍처·보안·테스트·ML/AI·인프라·비즈니스 운영 등 도메인 전반을 다룹니다.
+Claude Code·Codex·Cursor·OpenCode·Copilot 등 여러 하니스에서 쓸 수 있는 **202개 에이전트, 93개 플러그인, 181개 스킬, 105개 커맨드**를 제공하는 마켓플레이스입니다. 아키텍처·보안·테스트·ML/AI·인프라·비즈니스 운영 등 도메인 전반을 다룹니다.
 
 무료 (MIT) · https://github.com/wshobson/agents
 
