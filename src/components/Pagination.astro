@@ -39,6 +39,7 @@ const hasNext = currentPage < lastPage;
 			href={hasPrev ? hrefFor(currentPage - 1) : undefined}
 			aria-label={t('pagination.prev')}
 			aria-disabled={hasPrev ? undefined : 'true'}
+			tabindex={hasPrev ? undefined : -1}
 		>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
 		</a>
@@ -58,6 +59,7 @@ const hasNext = currentPage < lastPage;
 			href={hasNext ? hrefFor(currentPage + 1) : undefined}
 			aria-label={t('pagination.next')}
 			aria-disabled={hasNext ? undefined : 'true'}
+			tabindex={hasNext ? undefined : -1}
 		>
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
 		</a>

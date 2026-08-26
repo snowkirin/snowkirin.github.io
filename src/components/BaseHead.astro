@@ -93,18 +93,18 @@ const shareImageSrc = await toShareImage(image);
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
 <meta property="og:locale" content={siteLocale.og} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(shareImageSrc, Astro.url)} />
+<meta property="og:image" content={new URL(shareImageSrc, canonicalURL)} />
 
 <!-- Twitter（X 規格是 name= 而非 property=；缺 twitter 標籤時 X 會 fallback 到 OG，
      但 summary_large_image 這種 twitter 專屬欄位沒有 OG 對應，得靠 name= 正確讀到） -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={Astro.url} />
+<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={new URL(shareImageSrc, Astro.url)} />
+<meta name="twitter:image" content={new URL(shareImageSrc, canonicalURL)} />
 
 <!-- JSON-LD 結構化資料（schema.org）：跳脫 `<` 避免字串內容提早關閉 script -->
 {

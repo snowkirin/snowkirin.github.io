@@ -1,5 +1,5 @@
 import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { COPYRIGHT_NAME, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { siteLocale } from '../i18n/ui';
 import { getSortedPosts, postDescription } from '../lib/posts';
 
@@ -11,6 +11,7 @@ export async function GET(context) {
 		description: SITE_DESCRIPTION,
 		site: context.site,
 		stylesheet: '/rss/styles.xsl',
+		copyright: `${new Date().getUTCFullYear()} ${COPYRIGHT_NAME}`,
 		customData: `<language>${siteLocale.html}</language>`,
 		items: posts.map((post) => ({
 			...post.data,

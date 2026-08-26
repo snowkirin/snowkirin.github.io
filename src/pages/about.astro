@@ -15,7 +15,7 @@ const licenseContact = t("license.contact");
     </div>
 
     <p style="margin-bottom: 0;">
-        「좋은 코드는 읽는 사람의 시간을 아껴 준다.」
+        웹과 프론트엔드를 좋아하는 개발자 snowkirin의 기술 블로그입니다.
     </p>
     <div style="text-align: right;">— snowkirin</div>
 
@@ -37,7 +37,7 @@ const licenseContact = t("license.contact");
         <p>
             글을 인용할 때는 글 주소를 밝혀 주시고{" "}
             <a href={licenseUrl} target="_blank">{t("license.fullName")}</a>
-            {licenseContact && <>，{licenseContact}</>}
+            {licenseContact && <> ({licenseContact})</>}
             의 규정을 지켜 주세요.
         </p>
     ) : (

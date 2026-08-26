@@ -1,9 +1,9 @@
 {
-  "name": "biluo",
+  "name": "snowkirin",
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "碧落 Biluo — 注重效能與排版的 Astro 部落格主題（zh-Hant）。A clean, performance-focused Astro blog theme.",
+  "description": "Snowkirin — 정진수의 기술 블로그 (Astro). A clean, performance-focused Astro blog.",
   "license": "MIT",
   "author": "Just-Passersby",
   "homepage": "https://github.com/Just-Passersby/astro-biluo#readme",
