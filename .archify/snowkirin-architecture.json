@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Snowkirin Astro 블로그 아키텍처",
+    "output": "snowkirin-architecture.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1260,
+      660
+    ],
+    "views": [
+      {
+        "id": "request-path",
+        "label": "요청 경로",
+        "focus": [
+          "users",
+          "edge",
+          "site"
+        ],
+        "note": "방문자 요청이 CDN 에지를 거쳐 정적 사이트로 흐르는 주 경로입니다."
+      },
+      {
+        "id": "content-drive",
+        "label": "컨텐츠 구동",
+        "focus": [
+          "content",
+          "data",
+          "lib",
+          "i18n"
+        ],
+        "note": "MDX 컨텐츠와 정적 데이터가 사이트를 구동합니다."
+      },
+      {
+        "id": "build-deploy",
+        "label": "빌드·배포",
+        "focus": [
+          "build",
+          "deploy"
+        ],
+        "note": "astro build + pagefind 후 Cloudflare Workers로 배포합니다."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "content",
+      "type": "database",
+      "label": "컨텐츠 컬렉션",
+      "sublabel": "src/content (MDX)",
+      "pos": [
+        60,
+        60
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "data",
+      "type": "database",
+      "label": "정적 데이터",
+      "sublabel": "taxonomy · series",
+      "pos": [
+        360,
+        60
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "lib",
+      "type": "backend",
+      "label": "핵심 로직",
+      "sublabel": "src/lib · posts",
+      "pos": [
+        660,
+        60
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "i18n",
+      "type": "backend",
+      "label": "i18n (ko 단일)",
+      "sublabel": "src/i18n",
+      "pos": [
+        960,
+        60
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "users",
+      "type": "external",
+      "label": "방문자",
+      "sublabel": "Browser",
+      "pos": [
+        60,
+        200
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "edge",
+      "type": "cloud",
+      "label": "Cloudflare CDN",
+      "sublabel": "에지 캐시",
+      "pos": [
+        360,
+        200
+      ],
+      "size": [
+        180,
+        60
+      ],
+      "tag": "Edge"
+    },
+    {
+      "id": "site",
+      "type": "frontend",
+      "label": "Astro 정적 사이트",
+      "sublabel": "static site",
+      "pos": [
+        60,
+        330
+      ],
+      "size": [
+        1090,
+        60
+      ]
+    },
+    {
+      "id": "giscus",
+      "type": "external",
+      "label": "댓글 (비활성)",
+      "sublabel": "Giscus · GitHub Discussions",
+      "pos": [
+        60,
+        460
+      ],
+      "size": [
+        180,
+        60
+      ],
+      "tag": "provider: none"
+    },
+    {
+      "id": "deploy",
+      "type": "cloud",
+      "label": "Cloudflare Workers",
+      "sublabel": "wrangler deploy",
+      "pos": [
+        360,
+        460
+      ],
+      "size": [
+        180,
+        60
+      ],
+      "tag": "배포"
+    },
+    {
+      "id": "build",
+      "type": "cloud",
+      "label": "빌드 파이프라인",
+      "sublabel": "astro build + pagefind",
+      "pos": [
+        660,
+        460
+      ],
+      "size": [
+        180,
+        60
+      ]
+    },
+    {
+      "id": "search",
+      "type": "backend",
+      "label": "pagefind 검색",
+      "sublabel": "검색 인덱스",
+      "pos": [
+        960,
+        460
+      ],
+      "size": [
+        180,
+        60
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "users-to-edge",
+      "from": "users",
+      "to": "edge",
+      "label": "HTTPS 요청",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "edge-to-site",
+      "from": "edge",
+      "to": "site",
+      "label": "정적 자산",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "content-to-site",
+      "from": "content",
+      "to": "site",
+      "label": "포스트/시리즈",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "data-to-site",
+      "from": "data",
+      "to": "site",
+      "label": "분류·메타데이터",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "lib-to-site",
+      "from": "lib",
+      "to": "site",
+      "label": "가공된 컨텐츠",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "i18n-to-site",
+      "from": "i18n",
+      "to": "site",
+      "label": "문자열·UI",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "site-to-giscus",
+      "from": "site",
+      "to": "giscus",
+      "label": "연동 구성",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "site-to-search",
+      "from": "site",
+      "to": "search",
+      "label": "검색",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "build-to-deploy",
+      "from": "build",
+      "to": "deploy",
+      "label": "산출물",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "right"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "메인 경로",
+      "items": [
+        "방문자 → CDN 에지 → 정적 사이트",
+        "astro build + pagefind로 사전 생성된 산출물 서빙"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "컨텐츠 구동",
+      "items": [
+        "MDX 컨텐츠 컬렉션과 정적 데이터가 사이트를 구동",
+        "lib 계층이 포스트·시리즈·분류를 가공",
+        "i18n 문자열 사전 (현재 ko 단일)",
+        "댓글 인프라 구성 (현재 비활성, provider: none)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "빌드·배포",
+      "items": [
+        "astro build + pagefind로 정적 산출물 생성",
+        "wrangler deploy로 Cloudflare Workers에 배포",
+        "배포 결과가 CDN 에지에 반영"
+      ]
+    }
+  ]
+}
